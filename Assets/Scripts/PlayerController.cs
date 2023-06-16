@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
 
     private Animator playerAnim;
 
+    public float verticalInput;
+    public float speed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,9 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
             playerAnim.SetTrigger("Jump_trig");
         }
+
+       verticalInput = Input.GetAxis("Vertical");
+        transform.Translate(Vector3.forward  * verticalInput * Time.deltaTime * speed);
     }
 
     private void OnCollisionEnter(Collision collision)
